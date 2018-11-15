@@ -159,7 +159,7 @@
           "properties": {
             "RepoUrl": "[parameters('sourceCodeRepositoryURL')]",
             "branch": "[parameters('sourceCodeBranch')]",
-            "IsManualIntegration": "false"
+            "IsManualIntegration": "true"
           }
         },
         {
