@@ -88,9 +88,9 @@
     }
   },
   "variables": {
-    "functionsAppName": "[concat(toLower(parameters('functionsAppName')),uniqueString(resourceGroup().id))]",
+    "functionsAppName": "[parameters('functionsAppName'))]",
     "storageAccountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-    "storageAccountName": "[concat('storage',uniqueString(resourceGroup().id))]",
+    "storageAccountName": "['oefblmediaservicesfunctionstorage']",
     "hostingPlanName": "[concat(variables('functionsAppName'), 'plan')]"
   },
   "resources": [
