@@ -90,7 +90,7 @@
   "variables": {
     "functionsAppName": "[parameters('functionsAppName')]",
     "storageAccountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-    "storageAccountName": "['oefblmediaservicesfunctionstorage']",
+    "storageAccountName": "['oefblmediaservicesfxstorage']",
     "hostingPlanName": "[concat(variables('functionsAppName'), 'plan')]"
   },
   "resources": [
