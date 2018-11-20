@@ -142,7 +142,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
         AddTask(job, asset, (string)data.faceRedactionMode, "Azure Media Redactor", "FaceRedaction.json", "combined", ref taskindex);
         AddTask(job, asset, (string)data.motionDetectionLevel, "Azure Media Motion Detector", "MotionDetection.json", "medium", ref taskindex);
         AddTask(job, asset, (string)data.summarizationDuration, "Azure Media Video Thumbnails", "Summarization.json", "0.0", ref taskindex);
-        AddTask(job, asset, (string)data.Thumbnail, "Media Encoder Standard", "Thumbnail.json", "90", ref taskindex);
+        AddTask(job, asset, (string)data.Thumbnail, "Media Encoder Standard", "Thumbnail.json", "30", ref taskindex);
 
         job.Submit();
         log.Info("Job Submitted");
