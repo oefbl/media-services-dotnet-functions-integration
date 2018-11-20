@@ -51,6 +51,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
     int taskindex = 0;
     IJob job = null;
     IAsset outputAsset = null;
+    IAsset outputAssetThumbnail = null;
     IAsset outputEncoding = null;
     try
     {
@@ -148,6 +149,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
         log.Info("Job Submitted");
 
         outputAsset = job.OutputMediaAssets.FirstOrDefault();
+        outputAssetThumbnail = job.OutputMediaAssets.LastOrDefault(); //TODO: make it optional
         //outputAsset = outputEncoding;
     }
     catch (Exception ex)
@@ -162,6 +164,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
     return req.CreateResponse(HttpStatusCode.OK, new
     {
         JobId = job.Id,
-        OutputAssetId = outputAsset.Id
+        OutputAssetId = outputAsset.Id,
+        OutputAsstIdThumbnail = outputAssetThumbnail.Id
     });
 }
