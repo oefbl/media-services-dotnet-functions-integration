@@ -1,25 +1,25 @@
+{
+  "Version": 1.0,
+  "Codecs": [
     {
-      "Version": 1.0,
-      "Codecs": [
+      "PngLayers": [
         {
-          "PngLayers": [
-            {
-              "Quality": 90,
-              "Type": "JpgLayer",
-              "Width": "100%",
-              "Height": "100%"
-            }
-          ],
-          "Start": "{Best}",
-          "Type": "PngImage"
+          "Quality": 90,
+          "Type": "JpgLayer",
+          "Width": "100%",
+          "Height": "100%"
         }
       ],
-      "Outputs": [
-        {
-          "FileName": "{Basename}_{Index}{Extension}",
-          "Format": {
-            "Type": "JpgFormat"
-          }
-        }
-      ]
+      "Start": "{Best}",
+      "Type": "PngImage"
     }
+  ],
+  "Outputs": [
+    {
+      "FileName": "{Basename}_{Index}{Extension}",
+      "Format": {
+        "Type": "JpgFormat"
+      }
+    }
+  ]
+}
