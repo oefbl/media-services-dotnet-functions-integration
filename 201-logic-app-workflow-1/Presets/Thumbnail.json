@@ -2,7 +2,7 @@
   "Version": 1.0,
   "Codecs": [
     {
-      "PngLayers": [
+      "JpgLayers": [
         {
           "Quality": 90,
           "Type": "JpgLayer",
@@ -11,7 +11,7 @@
         }
       ],
       "Start": "{Best}",
-      "Type": "PngImage"
+      "Type": "JpgImage"
     }
   ],
   "Outputs": [
