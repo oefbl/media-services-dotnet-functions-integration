@@ -54,7 +54,7 @@ public static int AddTask(IJob job, IAsset sourceAsset, string value, string pro
 
         // Add an output asset to contain the results of the job.
         string AssetType = "Analytics";
-        If (presetfilename == "Thumbnail.json")
+        if (presetfilename == "Thumbnail.json")
         {
             AssetType = "Thumbnail";
         }
