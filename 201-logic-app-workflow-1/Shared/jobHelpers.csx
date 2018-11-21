@@ -53,12 +53,7 @@ public static int AddTask(IJob job, IAsset sourceAsset, string value, string pro
         task.InputAssets.Add(sourceAsset);
 
         // Add an output asset to contain the results of the job.
-        string AssetType = "Analytics";
-        if (presetfilename == "Thumbnail.json")
-        {
-            AssetType = "Thumbnail";
-        }
-        task.OutputAssets.AddNew(sourceAsset.Name + " - " + AssetType + " - " + processor + " Output", AssetCreationOptions.None);
+        task.OutputAssets.AddNew(sourceAsset.Name + " - Analytics - " + processor + " Output", AssetCreationOptions.None);
 
         return taskindex++;
     }
