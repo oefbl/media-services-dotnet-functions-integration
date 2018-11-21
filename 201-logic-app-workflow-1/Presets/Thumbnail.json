@@ -10,9 +10,7 @@
           "Height": "100%"
         }
       ],
-      "Start": "00:00:10",
-      "Step": "1",
-      "Range": "1",
+      "Start": "{Best}",
       "Type": "JpgImage"
     }
   ],
