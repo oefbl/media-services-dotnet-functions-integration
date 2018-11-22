@@ -87,7 +87,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
         CloudBlobContainer destinationBlobContainer = GetCloudBlobContainer(_storageAccountName, _storageAccountKey, newAsset.Uri.Segments[1]);
         sourceBlobContainer.CreateIfNotExists();
         // Copy Source Blob container into Destination Blob container that is associated with the asset.
-        CopyBlobsAsync(sourceBlobContainer, destinationBlobContainer, data.FileName, log);
+        CloudBlob sourceblob = sourceBlobContainer.GetBlobReference(data.FileName);
+        CloudBlob destinationBlob = destinationBlobContainer.GetBlockBlobReference((sourceblob as CloudBlob).Name);
+        CopyBlobAsync(sourceblob, destinationBlob, log);
     }
     catch (Exception ex)
     {
