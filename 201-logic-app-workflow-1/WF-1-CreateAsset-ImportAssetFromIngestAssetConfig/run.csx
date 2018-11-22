@@ -83,11 +83,11 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
         log.Info("  - Asset Creation Option = " + config.IngestAsset.CreationOption);
 
         // Setup blob container
-        // CloudBlobContainer sourceBlobContainer = GetCloudBlobContainer(_sourceStorageAccountName, _sourceStorageAccountKey, config.IngestSource.SourceContainerName);
-        // CloudBlobContainer destinationBlobContainer = GetCloudBlobContainer(_storageAccountName, _storageAccountKey, newAsset.Uri.Segments[1]);
-        // sourceBlobContainer.CreateIfNotExists();
+        CloudBlobContainer sourceBlobContainer = GetCloudBlobContainer(_sourceStorageAccountName, _sourceStorageAccountKey, config.IngestSource.SourceContainerName);
+        CloudBlobContainer destinationBlobContainer = GetCloudBlobContainer(_storageAccountName, _storageAccountKey, newAsset.Uri.Segments[1]);
+        sourceBlobContainer.CreateIfNotExists();
         // Copy Source Blob container into Destination Blob container that is associated with the asset.
-        // CopyBlobsAsync(sourceBlobContainer, destinationBlobContainer, log);
+        CopyBlobsAsync(sourceBlobContainer, destinationBlobContainer, data.FileName, log);
     }
     catch (Exception ex)
     {
