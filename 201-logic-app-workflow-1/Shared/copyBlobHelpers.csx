@@ -22,7 +22,7 @@ static public CloudBlobContainer GetCloudBlobContainer(string storageAccountName
     return sourceCloudBlobClient.GetContainerReference(containerName);
 }
 
-static public void CopyBlobsAsync(CloudBlobContainer sourceBlobContainer, CloudBlobContainer destinationBlobContainer, TraceWriter log)
+static public void CopyBlobsAsync(CloudBlobContainer sourceBlobContainer, CloudBlobContainer destinationBlobContainer, string SourcePath, TraceWriter log)
 {
     if (destinationBlobContainer.CreateIfNotExists())
     {
@@ -34,9 +34,9 @@ static public void CopyBlobsAsync(CloudBlobContainer sourceBlobContainer, CloudB
 
     string blobPrefix = null;
     bool useFlatBlobListing = true;
-    var blobList = sourceBlobContainer.ListBlobs(blobPrefix, useFlatBlobListing, BlobListingDetails.None);
-    foreach (var sourceBlob in blobList)
-    {
+    //var blobList = sourceBlobContainer.ListBlobs(blobPrefix, useFlatBlobListing, BlobListingDetails.None);
+    //log.Info("Source blob : " + (sourceBlob as CloudBlob).Uri.ToString());
+    CloudBlob blob = sourceBlobContainer.GetBlobReference(SourcePath);
         log.Info("Source blob : " + (sourceBlob as CloudBlob).Uri.ToString());
         CloudBlob destinationBlob = destinationBlobContainer.GetBlockBlobReference((sourceBlob as CloudBlob).Name);
         if (destinationBlob.Exists())
@@ -45,10 +45,10 @@ static public void CopyBlobsAsync(CloudBlobContainer sourceBlobContainer, CloudB
         }
         else
         {
-            log.Info("Copying blob " + sourceBlob.Uri.ToString() + " to " + destinationBlob.Uri.ToString());
-            CopyBlobAsync(sourceBlob as CloudBlob, destinationBlob);
+            log.Info("Copying blob " + blob.Uri.ToString() + " to " + destinationBlob.Uri.ToString());
+            CopyBlobAsync(blob as CloudBlob, destinationBlob);
         }
-    }
+    
 }
 
 static public async void CopyBlobAsync(CloudBlob sourceBlob, CloudBlob destinationBlob)
