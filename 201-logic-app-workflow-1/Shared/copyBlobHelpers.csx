@@ -37,8 +37,8 @@ static public void CopyBlobsAsync(CloudBlobContainer sourceBlobContainer, CloudB
     //var blobList = sourceBlobContainer.ListBlobs(blobPrefix, useFlatBlobListing, BlobListingDetails.None);
     //log.Info("Source blob : " + (sourceBlob as CloudBlob).Uri.ToString());
     CloudBlob blob = sourceBlobContainer.GetBlobReference(SourcePath);
-        log.Info("Source blob : " + (sourceBlob as CloudBlob).Uri.ToString());
-        CloudBlob destinationBlob = destinationBlobContainer.GetBlockBlobReference((sourceBlob as CloudBlob).Name);
+        log.Info("Source blob : " + (blob as CloudBlob).Uri.ToString());
+        CloudBlob destinationBlob = destinationBlobContainer.GetBlockBlobReference((blob as CloudBlob).Name);
         if (destinationBlob.Exists())
         {
             log.Info("Destination blob already exists. Skipping: " + destinationBlob.Uri.ToString());
