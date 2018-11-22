@@ -89,7 +89,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
         // Copy Source Blob container into Destination Blob container that is associated with the asset.
         CloudBlob sourceblob = sourceBlobContainer.GetBlobReference(data.FileName);
         CloudBlob destinationBlob = destinationBlobContainer.GetBlockBlobReference((sourceblob as CloudBlob).Name);
-        CopyBlobAsync(sourceblob, destinationBlob, log);
+        CopyBlobAsync(sourceblob, destinationBlob);
     }
     catch (Exception ex)
     {
